@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const Card = (props) => {
+const Card = ({ name, colour }) => {
   return (
     <div>
-      <h2>{props.nom}</h2>
-
-      <h2>{props.ape}</h2>
+      <p>hola {name}!</p>
+      <p>Sabemos que tu color favorito es:</p>
+      <div style={{backgroundColor:colour}}>
+        <p>{colour}</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

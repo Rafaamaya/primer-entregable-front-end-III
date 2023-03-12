@@ -83,7 +83,7 @@ const Formulario = () => {
       {validacion && (
         <h2>"Por favor chequea que la información sea correcta"</h2>
       )}
-      {showCard && <Card nom={nombre} ape={color} />}
+      {showCard && <Card name={nombre} colour={color} />}
     </>
   );
 };
