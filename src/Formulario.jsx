@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "./components/Card";
-import { Input } from "./FormularioStyled";
+import TextInput from "./components/TextInput";
 
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
@@ -10,7 +10,6 @@ const Formulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     /*let validacionTresCaracteres = false;
     let validacionSeisCaracteres = false; */
 
@@ -52,19 +51,15 @@ const Formulario = () => {
           alignItems: "center",
         }}
       >
-        <span>Nombre</span>
-        <Input
-          type={"text"}
+        <TextInput
           placeholder={`Ingrese su nombre`}
           value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          onChange={setNombre}
         />
-        <span>Color</span>
-        <Input
-          type={"text"}
+        <TextInput
           placeholder={`Ingresa tu color favorito (formato HEX)`}
           value={color}
-          onChange={(e) => setColor(e.target.value)}
+          onChange={setColor}
         />
       </form>
       <div
