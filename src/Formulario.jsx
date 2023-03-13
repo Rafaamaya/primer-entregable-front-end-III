@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import Card from "./components/Card/Card";
 import TextInput from "./components/TextInput/TextInput";
 import { objeto } from "./constant/Objeto";
+import {
+  Body,
+  Button,
+  Container,
+  FormContainer,
+  H1,
+  OverlayContainer,
+} from "./FormularioStyled";
 
-const inputObjet = objeto
+const inputObjet = objeto;
 
 const Formulario = () => {
   const [values, setValues] = useState({ nombre: "", color: "" });
@@ -28,44 +36,33 @@ const Formulario = () => {
   };
 
   return (
-    <>
-      <form
-        id="login-form"
-        onSubmit={handleSubmit}
-        style={{
-          backgroundColor: "blue",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {inputObjet.map((field) => (
-          <TextInput
-            key={field.id}
-            name={field.name}
-            placeholder={field.placeholder}
-            value={values[field.name]}
-            onChange={handleChange}
-          />
-        ))}
-      </form>
-      <div
-        style={{
-          display: "flex",
-          backgroundColor: "brown",
-          flexDirection: "column",
-          margin: "10px 0px",
-        }}
-      >
-        <button form="login-form" btn="submit">
-          Enviar
-        </button>
-      </div>
-      {validacion && (
-        <h2>"Por favor chequea que la información sea correcta"</h2>
-      )}
-      {showCard && <Card name={values.nombre} colour={values.color} />}
-    </>
+    <Body>
+      <Container>
+        <FormContainer id="login-form" onSubmit={handleSubmit}>
+          <H1>Fron-End III</H1>
+          {inputObjet.map((field) => (
+            <TextInput
+              key={field.id}
+              name={field.name}
+              placeholder={field.placeholder}
+              value={values[field.name]}
+              onChange={handleChange}
+            />
+          ))}
+          <Button form="login-form" btn="submit">
+            Enviar
+          </Button>
+        </FormContainer>
+        {validacion && (
+          <h2>"Por favor chequea que la información sea correcta"</h2>
+        )}
+        {showCard && (
+          <OverlayContainer>
+            <Card name={values.nombre} colour={values.color} />
+          </OverlayContainer>
+        )}
+      </Container>
+    </Body>
   );
 };
 

@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 
 export const InputStyle = styled.input`
-  padding: 5px;
-  border-radius: 5px;
-  outline: none;
-  border: 1px solid #4E6E81;
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 50%;
 `;
