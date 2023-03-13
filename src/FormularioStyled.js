@@ -10,6 +10,12 @@ export const Body = styled.div`
   height: 100vh;
   margin: -20px 0 50px;
 `;
+export const A = styled.a`
+	color:red ;
+	font-size: 10px;
+	text-decoration: none;
+	margin: 10px 0;
+`;
 
 export const Container = styled.div`
   background-color: #fff;
@@ -40,12 +46,9 @@ export const Button = styled.button`
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transition: transform 80ms ease-in;
-  left: 0;
-  width: 50%;
-  z-index: 2;
+  margin-top: 10px;
 `;
 export const OverlayContainer = styled.div`
   background: #ff416c;
@@ -62,5 +65,5 @@ export const OverlayContainer = styled.div`
 `;
 export const H1 = styled.h1`
 	font-weight: bold;
-	margin: 0;
+	margin-bottom: 40px;
 `;

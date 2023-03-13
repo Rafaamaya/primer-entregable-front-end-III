@@ -3,6 +3,7 @@ import Card from "./components/Card/Card";
 import TextInput from "./components/TextInput/TextInput";
 import { objeto } from "./constant/Objeto";
 import {
+  A,
   Body,
   Button,
   Container,
@@ -49,13 +50,13 @@ const Formulario = () => {
               onChange={handleChange}
             />
           ))}
+          {validacion && (
+            <A>"Por favor chequea que la información sea correcta"</A>
+          )}
           <Button form="login-form" btn="submit">
             Enviar
           </Button>
         </FormContainer>
-        {validacion && (
-          <h2>"Por favor chequea que la información sea correcta"</h2>
-        )}
         {showCard && (
           <OverlayContainer>
             <Card name={values.nombre} colour={values.color} />
