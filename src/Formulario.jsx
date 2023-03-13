@@ -1,42 +1,30 @@
 import React, { useState } from "react";
-import Card from "./components/Card";
-import TextInput from "./components/TextInput";
+import Card from "./components/Card/Card";
+import TextInput from "./components/TextInput/TextInput";
+import { objeto } from "./constant/Objeto";
+
+const inputObjet = objeto
 
 const Formulario = () => {
-  const [nombre, setNombre] = useState("");
-  const [color, setColor] = useState("");
+  const [values, setValues] = useState({ nombre: "", color: "" });
   const [validacion, setValidacion] = useState(false);
   const [showCard, setShowCard] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /*let validacionTresCaracteres = false;
-    let validacionSeisCaracteres = false; */
-
-    if (nombre.trim().length >= 3 && color.length >= 6) {
+    if (values.nombre.trim().length >= 3 && values.color.length >= 6) {
       setShowCard(true);
       setValidacion(false);
-      // console.log("Es mayor a 3 caracteres");
     } else {
       setValidacion(true);
       setShowCard(false);
     }
-    /* 
-    if (color.length >= 6) {
-      validacionSeisCaracteres = true;
-      console.log("Es mayor o igual a 6 caracteres");
-    }
-    if (
-      validacionTresCaracteres === true &&
-      validacionSeisCaracteres === true
-    ) {
-      setValidacionOk(true);
-      setValidacion(false);
-      console.log("Renderizar Componente");
-    } else {
-     
-      console.log("Por favor Chequee que la informacion sea correcta");
-    } */
+  };
+
+  const handleChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    setValues({ ...values, [key]: value });
   };
 
   return (
@@ -51,16 +39,15 @@ const Formulario = () => {
           alignItems: "center",
         }}
       >
-        <TextInput
-          placeholder={`Ingrese su nombre`}
-          value={nombre}
-          onChange={setNombre}
-        />
-        <TextInput
-          placeholder={`Ingresa tu color favorito (formato HEX)`}
-          value={color}
-          onChange={setColor}
-        />
+        {inputObjet.map((field) => (
+          <TextInput
+            key={field.id}
+            name={field.name}
+            placeholder={field.placeholder}
+            value={values[field.name]}
+            onChange={handleChange}
+          />
+        ))}
       </form>
       <div
         style={{
@@ -74,11 +61,10 @@ const Formulario = () => {
           Enviar
         </button>
       </div>
-
       {validacion && (
         <h2>"Por favor chequea que la información sea correcta"</h2>
       )}
-      {showCard && <Card name={nombre} colour={color} />}
+      {showCard && <Card name={values.nombre} colour={values.color} />}
     </>
   );
 };
